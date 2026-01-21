@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpool Nigeria - Share Your Commute, Save Money</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .problem-section {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .problem-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .problem-points {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            gap: 30px;
+        }
+        
+        .problem-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .problem-card h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .solution-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .solution-section h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #667eea;
+        }
+        
+        .how-it-works {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .signup-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 30px auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .signup-form h3 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .benefit-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        
+        .benefit-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+            
+            .signup-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Share Your Commute, Split the Cost</h1>
+        <p>Connect with fellow Nigerian workers. Save money on transport. Beat traffic together.</p>
+    </div>
+
+    <div class="problem-section">
+        <div class="container">
+            <h2>The Daily Struggle</h2>
+            <p>We've all experienced it...</p>
+            <div class="problem-points">
+                <div class="problem-card">
+                    <h3>🚌 Limited Transport</h3>
+                    <p>Not enough buses during rush hour means longer waits and overcrowding</p>
+                </div>
+                <div class="problem-card">
+                    <h3>💰 High Prices</h3>
+                    <p>Transport fares spike when demand is high, eating into your salary</p>
+                </div>
+                <div class="problem-card">
+                    <h3>🚗 Empty Cars</h3>
+                    <p>Private car owners drive alone while commuters struggle to find transport</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="solution-section">
+        <div class="container">
+            <h2>The Solution: Smart Carpooling</h2>
+            <p>What if we could connect private car owners with commuters heading the same direction?</p>
+            
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up</h3>
+                    <p>Create your profile as a driver or passenger</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Match</h3>
+                    <p>Find people on your route or post your trip</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Connect</h3>
+                    <p>Agree on pickup points and price</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Travel</h3>
+                    <p>Share the ride, split the cost, arrive together</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="container">
+            <h2>Join the Waitlist</h2>
+            <div class="benefits">
+                <div class="benefit-box">
+                    <h4>For Drivers</h4>
+                    <p>Offset your fuel costs and meet fellow professionals</p>
+                </div>
+                <div class="benefit-box">
+                    <h4>For Passengers</h4>
+                    <p>Get affordable, comfortable rides with verified drivers</p>
+                </div>
+                <div class="benefit-box">
+                    <h4>For Everyone</h4>
+                    <p>Reduce traffic, save money, and build community</p>
+                </div>
+            </div>
+
+            <div class="signup-form">
+                <div class="success-message" id="successMessage">
+                    Thank you for signing up! We'll contact you soon.
+                </div>
+                <h3>Get Early Access</h3>
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g., 08012345678" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userType">I am a: *</label>
+                        <select id="userType" name="userType" required>
+                            <option value="">Select...</option>
+                            <option value="driver">Driver (I have a car)</option>
+                            <option value="passenger">Passenger (Looking for rides)</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="routeFrom">My typical route - From: *</label>
+                        <input type="text" id="routeFrom" name="routeFrom" placeholder="e.g., Ikeja" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="routeTo">To: *</label>
+                        <input type="text" id="routeTo" name="routeTo" placeholder="e.g., Victoria Island" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="challenge">What's your biggest commute challenge? (Optional)</label>
+                        <textarea id="challenge" name="challenge" placeholder="Tell us about your daily transport struggles..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Join the Waitlist</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Carpool Nigeria. Building the future of commuting together.</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Safety features include: Driver verification, Passenger ratings, NIN verification</p>
+    </footer>
+
+    <script>
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                userType: document.getElementById('userType').value,
+                routeFrom: document.getElementById('routeFrom').value,
+                routeTo: document.getElementById('routeTo').value,
+                challenge: document.getElementById('challenge').value
+            };
+            
+            // Here you would normally send this to your backend/database
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+            
+            // For now, you could store in localStorage to track signups
+            let signups = JSON.parse(localStorage.getItem('carpoolSignups') || '[]');
+            signups.push({
+                ...formData,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('carpoolSignups', JSON.stringify(signups));
+        });
+    </script>
+</body>
+</html>
